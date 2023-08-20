@@ -51,7 +51,7 @@ module.exports.infoEmbed = async (file, interaction) => {
     const openButton = new ButtonBuilder()
         .setLabel('Open')
         .setStyle(ButtonStyle.Link)
-        .setURL(file.url)
+        .setURL(`${process.env.FRIENDLY_URL}/${file.name}`)
         .setEmoji('🔗');
 
     row.addComponents(deleteButton, openButton);
