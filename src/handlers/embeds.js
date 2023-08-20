@@ -27,7 +27,7 @@ module.exports.infoEmbed = async (file, interaction) => {
     embed.setDescription(`
 - Name: \`${file.name}\`
 - Original Name: \`${file.original}\`
-- UUID:\` ${file.uuid}\`
+- UUID: \`${file.uuid}\`
 - Size: \`${size}\`
 - Created At: <t:${seconds}> 
 - Uploaded IP: \`${file.ip}\`
