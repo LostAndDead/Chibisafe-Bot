@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const api = require('../handlers/api.js');
-const embds = require('../handlers/embeds.js');
+const embeds = require('../handlers/embeds.js');
 
 module.exports.run = async(interaction, Client) => {
 
@@ -9,7 +9,7 @@ module.exports.run = async(interaction, Client) => {
 
     const file = await api.getFile(uuid);
 
-    await embds.infoEmbed(file, interaction);
+    await embeds.infoEmbed(file, interaction);
 };
 
 module.exports.info = new SlashCommandBuilder()
