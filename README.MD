@@ -48,7 +48,8 @@ services:
     environment:
       - TOKEN=(YOUR BOT TOKEN)
       - API_KEY=(YOUR API KEY)
-      - URL=(YOUR URL)
+      - API_URL=(YOUR URL, can be docker hosts IP or domain)
+      - FRIENDLY_URL=(YOUR FRIENDLY URL, can be domain or IP)
       - CLIENT_ID=(YOUR BOT USER ID)
       - USER_ID=(YOUR USER ID, This is who the bot will send the messages too)
 ```
