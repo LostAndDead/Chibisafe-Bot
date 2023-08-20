@@ -49,7 +49,7 @@ async function checkLoop(){
                     const user = await client.users.fetch(process.env.USER_ID);
                     if(!user) return;
                     const embed = new EmbedBuilder()
-                        .setImage(file.url)
+                        .setImage(`${process.env.FRIENDLY_URL}/${file.name}`)
                         .setFooter({text: `${file.uuid}`})
                         .setTimestamp();
                         
@@ -90,7 +90,7 @@ async function checkLoop(){
                     const openButton = new ButtonBuilder()
                         .setLabel('Open')
                         .setStyle(ButtonStyle.Link)
-                        .setURL(file.url)
+                        .setURL(`${process.env.FRIENDLY_URL}/${file.name}`)
                         .setEmoji('🔗');
 
                     const row = new ActionRowBuilder()
