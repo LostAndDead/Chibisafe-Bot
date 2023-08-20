@@ -229,6 +229,11 @@ module.exports.removeFromAlbum = async (uuid, album) => {
 
 module.exports.setLoopState = (state) => {
     checkState = state;
+    if(!checkState) knownFiles = [];
+}
+
+module.exports.getLoopState = () => {
+    return checkState;
 }
 
 module.exports.startLoop = (Client) => {

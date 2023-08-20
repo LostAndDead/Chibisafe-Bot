@@ -72,7 +72,7 @@ client.on("ready", async() => {
     apiStatus = await api.checkAuth();
     console.log("API Status: " + apiStatus);
     api.startLoop(client);
-    if(apiStatus) await api.setLoopState(true);
+    api.setLoopState(true);
 });
 
 //Listen for commands coming from chat and context menus
