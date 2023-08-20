@@ -27,16 +27,16 @@ module.exports.infoEmbed = async (file, interaction) => {
     embed.setDescription(`
 - Name: \`${file.name}\`
 - Original Name: \`${file.original}\`
-- UUID:\` ${file.uuid}\`
+- UUID: \`${file.uuid}\`
 - Size: \`${size}\`
 - Created At: <t:${seconds}> 
 - Uploaded IP: \`${file.ip}\`
 - Hash: \`${file.hash}\`
 - Type: \`${file.type}\`
-- URL: ${file.url}
-- Thumbnail: ${file.thumb || "None"}
-- Thumbnail Square: ${file.thumbSquare || "None"}
-- Preview: ${file.preview || "None"}
+- URL: ${process.env.FRIENDLY_URL}/${file.name}
+- Thumbnail: ${`${file.thumb.replace(process.env.API_URL, process.env.FRIENDLY_URL)}` || "None"}
+- Thumbnail Square: ${`${file.thumbSquare.replace(process.env.API_URL, process.env.FRIENDLY_URL)}` || "None"}
+- Preview: ${`${file.preview.replace(process.env.API_URL, process.env.FRIENDLY_URL)}` || "None"}
 - Albums: \n  - ${file.albums.map(album => `[${album.name}](${process.env.FRIENDLY_URL}/dashboard/albums/${album.uuid})`).join('\n  - ')}
     `);
 
@@ -51,7 +51,7 @@ module.exports.infoEmbed = async (file, interaction) => {
     const openButton = new ButtonBuilder()
         .setLabel('Open')
         .setStyle(ButtonStyle.Link)
-        .setURL(file.url)
+        .setURL(`${process.env.FRIENDLY_URL}/${file.name}`)
         .setEmoji('🔗');
 
     row.addComponents(deleteButton, openButton);
@@ -74,7 +74,7 @@ module.exports.filesEmbed= async (files, page, count, next, interaction, update)
     for (const file of files) {
         const image = new EmbedBuilder()
         .setURL(`${process.env.FRIENDLY_URL}/dashboard/uploads`)
-        .setImage(file.url)
+        .setImage(`${process.env.FRIENDLY_URL}/${file.name}`)
 
         embeds.push(image);
 
@@ -86,23 +86,23 @@ module.exports.filesEmbed= async (files, page, count, next, interaction, update)
         switch (count) {
             case 1:
                 infoButton.setEmoji('1️⃣');
-                description += `- 1️⃣ [${file.name}](${file.url})\n`;
+                description += `- 1️⃣ [${file.name}](${process.env.FRIENDLY_URL}/${file.name})\n`;
                 break;
             case 2:
                 infoButton.setEmoji('2️⃣');
-                description += `- 2️⃣ [${file.name}](${file.url})\n`;
+                description += `- 2️⃣ [${file.name}](${process.env.FRIENDLY_URL}/${file.name})\n`;
                 break;
             case 3:
                 infoButton.setEmoji('3️⃣');
-                description += `- 3️⃣ [${file.name}](${file.url})\n`;
+                description += `- 3️⃣ [${file.name}](${process.env.FRIENDLY_URL}/${file.name})\n`;
                 break;
             case 4:
                 infoButton.setEmoji('4️⃣');
-                description += `- 4️⃣ [${file.name}](${file.url})\n`;
+                description += `- 4️⃣ [${file.name}](${process.env.FRIENDLY_URL}/${file.name})\n`;
                 break;
             default:
                 infoButton.setEmoji('ℹ');
-                description += `- ℹ [${file.name}](${file.url})\n`;
+                description += `- ℹ [${file.name}](${process.env.FRIENDLY_URL}/${file.name})\n`;
         }
 
         row.addComponents(infoButton);
