@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  chibisafe-bot:
+    build: ./
+    container_name: chibisafe-bot
+    restart: unless-stopped
+    environment:
+      - TOKEN=(YOUR BOT TOKEN)
+      - API_KEY=(YOUR API KEY)
+      - URL=(YOUR URL)
+      - CLIENT_ID=(YOUR BOT USER ID)
+      - USER_ID=(YOUR USER ID, This is who the bot will send the messages too)
