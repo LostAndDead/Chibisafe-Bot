@@ -35,7 +35,7 @@ There are 2 ways to use this, you can either deploy it using the prebuilt docker
 
 ### Docker
 
-The docker image is available on docker hub at `chibisafe/discord-bot`. You can run it with the following command:
+The docker image is available on ghcr at `lostanddead/chibisafe-bot`. You can run it with the following command:
 
 ```yml
 version: "3.9"
