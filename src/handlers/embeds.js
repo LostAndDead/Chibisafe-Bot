@@ -37,7 +37,7 @@ module.exports.infoEmbed = async (file, interaction) => {
 - Thumbnail: ${file.thumb || "None"}
 - Thumbnail Square: ${file.thumbSquare || "None"}
 - Preview: ${file.preview || "None"}
-- Albums: \n  - ${file.albums.map(album => `[${album.name}](${process.env.URL}/dashboard/albums/${album.uuid})`).join('\n  - ')}
+- Albums: \n  - ${file.albums.map(album => `[${album.name}](${process.env.FRIENDLY_URL}/dashboard/albums/${album.uuid})`).join('\n  - ')}
     `);
 
     const row = new ActionRowBuilder()
@@ -63,7 +63,7 @@ module.exports.filesEmbed= async (files, page, count, next, interaction, update)
     embeds = []
     const embed = new EmbedBuilder()
         .setTitle(`Files (Page ${page}/${Math.ceil(count/4)})`)
-        .setURL(`${process.env.URL}/dashboard/uploads`);
+        .setURL(`${process.env.FRIENDLY_URL}/dashboard/uploads`);
     
     embeds.push(embed);
 
@@ -73,7 +73,7 @@ module.exports.filesEmbed= async (files, page, count, next, interaction, update)
 
     for (const file of files) {
         const image = new EmbedBuilder()
-        .setURL(`${process.env.URL}/dashboard/uploads`)
+        .setURL(`${process.env.FRIENDLY_URL}/dashboard/uploads`)
         .setImage(file.url)
 
         embeds.push(image);
@@ -86,7 +86,7 @@ module.exports.filesEmbed= async (files, page, count, next, interaction, update)
         switch (count) {
             case 1:
                 infoButton.setEmoji('1️⃣');
-                description += `- 1️⃣ [${file.name}](${process.env.URL}/dashboard/uploads/${file.uuid})\n`;
+                description += `- 1️⃣ [${file.name}](${file.url})\n`;
                 break;
             case 2:
                 infoButton.setEmoji('2️⃣');

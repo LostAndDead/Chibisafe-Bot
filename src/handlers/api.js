@@ -6,7 +6,7 @@ var knownFiles = []
 var client
 
 module.exports.checkAuth = async() => {
-    const response = await fetch(`${process.env.URL}/api/user/me`, {
+    const response = await fetch(`${process.env.API_URL}/api/user/me`, {
         method: "GET",
         headers: {
             "x-api-key": process.env.API_KEY
@@ -31,7 +31,7 @@ async function checkLoop(){
         return;
     }
     
-    fetch(`${process.env.URL}/api/files?limit=1`, {
+    fetch(`${process.env.API_URL}/api/files?limit=1`, {
         method: "GET",
     headers: {
         "x-api-key": process.env.API_KEY
@@ -110,7 +110,7 @@ async function checkLoop(){
 }
 
 async function getAlbums() {
-    const response = await fetch (`${process.env.URL}/api/albums`, {
+    const response = await fetch (`${process.env.API_URL}/api/albums`, {
         method: "GET",
         headers: {
             "x-api-key": process.env.API_KEY
@@ -129,7 +129,7 @@ async function getAlbums() {
 module.exports.getAlbums = getAlbums;
 
 async function getFile(uuid) {
-    const response = await fetch (`${process.env.URL}/api/file/${uuid}`, {
+    const response = await fetch (`${process.env.API_URL}/api/file/${uuid}`, {
         method: "GET",
         headers: {
             "x-api-key": process.env.API_KEY,
@@ -147,7 +147,7 @@ async function getFile(uuid) {
 module.exports.getFile = getFile;
 
 module.exports.deleteFile = async (uuid) => {
-    const response = await fetch (`${process.env.URL}/api/file/${uuid}`, {
+    const response = await fetch (`${process.env.API_URL}/api/file/${uuid}`, {
         method: "DELETE",
         headers: {
             "x-api-key": process.env.API_KEY,
@@ -169,7 +169,7 @@ module.exports.deleteFile = async (uuid) => {
 }
 
 module.exports.getFiles = async (limit, page) => {
-    const response = await fetch (`${process.env.URL}/api/files?page=${page}&limit=${limit}`, {
+    const response = await fetch (`${process.env.API_URL}/api/files?page=${page}&limit=${limit}`, {
         method: "GET",
         headers: {
             "x-api-key": process.env.API_KEY,
@@ -186,7 +186,7 @@ module.exports.getFiles = async (limit, page) => {
 }
 
 module.exports.addToAlbum = async (uuid, album) => {
-    const response = await fetch (`${process.env.URL}/api/file/${uuid}/album/${album}`, {
+    const response = await fetch (`${process.env.API_URL}/api/file/${uuid}/album/${album}`, {
         method: "POST",
         headers: {
             "x-api-key": process.env.API_KEY,
@@ -207,7 +207,7 @@ module.exports.addToAlbum = async (uuid, album) => {
 }
 
 module.exports.removeFromAlbum = async (uuid, album) => {
-    const response = await fetch (`${process.env.URL}/api/file/${uuid}/album/${album}`, {
+    const response = await fetch (`${process.env.API_URL}/api/file/${uuid}/album/${album}`, {
         method: "DELETE",
         headers: {
             "x-api-key": process.env.API_KEY,
