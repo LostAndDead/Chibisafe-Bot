@@ -2,6 +2,7 @@ const {Client, Collection, GateawayIntentBits, IntentsBitField} = require('disco
 const fs = require('fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
+const express = require('express');
 
 //Get package.json
 const pjson = require('../package.json');
@@ -72,7 +73,7 @@ client.on("ready", async() => {
     apiStatus = await api.checkAuth();
     console.log("API Status: " + apiStatus);
     api.startLoop(client);
-    api.setLoopState(true);
+    api.setLoopState(apiStatus);
 });
 
 //Listen for commands coming from chat and context menus
@@ -164,3 +165,19 @@ client.on('interactionCreate', async interaction => {
 });
 
 client.login(process.env.TOKEN);
+
+// Docker health check web server
+const app = express();
+const port = 8080;
+
+app.get('/healthcheck', (req, res) => {
+	if (api.getLoopState() == true) {
+		res.status(200).send("OK");
+	}else {
+		res.status(500).send("ERROR");
+	}
+});
+
+app.listen(port, () => {
+	console.log(`Health check running at on port ${port}`);
+});
