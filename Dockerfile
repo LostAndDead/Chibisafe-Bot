@@ -7,4 +7,6 @@ RUN npm install
 
 COPY . .
 
+HEALTHCHECK CMD curl --fail http://localhost:8080/healthcheck || exit 1   
+
 CMD ["npm", "start"]

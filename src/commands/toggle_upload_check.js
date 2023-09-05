@@ -7,12 +7,12 @@ module.exports.run = async(interaction, Client) => {
     var value = interaction.options.getBoolean('value');
 
     if(value == null){
-        api.setLoopState(!api.getLoopState());
-        await interaction.reply({ content: `Upload checking is now ${api.getLoopState() ? "enabled" : "disabled"}`, ephemeral: true });
+        api.setDisabled(!api.getDisabled());
+        await interaction.reply({ content: `Upload checking is now ${api.getDisabled() ? "enabled" : "disabled"}`, ephemeral: true });
     }
     else{
-        api.setLoopState(value);
-        await interaction.reply({ content: `Upload checking is now ${api.getLoopState() ? "enabled" : "disabled"}`, ephemeral: true });
+        api.setDisabled(value);
+        await interaction.reply({ content: `Upload checking is now ${api.getDisabled() ? "enabled" : "disabled"}`, ephemeral: true });
     }
 };
 

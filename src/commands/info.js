@@ -8,6 +8,10 @@ module.exports.run = async(interaction, Client) => {
     var uuid = interaction.options.getString('uuid');
 
     const file = await api.getFile(uuid);
+    if(!file) {
+        await interaction.reply({ content: 'Sorry, seems there was an error somewhere, check the console for more details.', ephemeral: true });
+        return;
+    }
 
     await embeds.infoEmbed(file, interaction);
 };
