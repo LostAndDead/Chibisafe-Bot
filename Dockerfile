@@ -9,6 +9,7 @@ COPY . .
 
 RUN apk --no-cache add curl
 
-HEALTHCHECK CMD curl --fail http://localhost:8080/healthcheck || exit 1   
+HEALTHCHECK --interval=10s --timeout=12s --start-period=10s \  
+    CMD node healthcheck.js
 
 CMD ["npm", "start"]

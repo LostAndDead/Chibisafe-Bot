@@ -2,7 +2,6 @@ const {Client, Collection, GateawayIntentBits, IntentsBitField} = require('disco
 const fs = require('fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
-const prometheus = require('prom-client');
 const express = require('express');
 
 //Get package.json
@@ -170,14 +169,6 @@ client.login(process.env.TOKEN);
 // Docker health check web server
 const app = express();
 const port = 8080;
-
-const register = new prometheus.Registry();
-prometheus.collectDefaultMetrics({ register });
-
-app.get('/metrics', async (req, res) => {
-	res.set('Content-Type', register.contentType);
-	res.end(await register.metrics());
-});
 
 app.get('/healthcheck', (req, res) => {
 	if (api.getLoopState() == true) {
