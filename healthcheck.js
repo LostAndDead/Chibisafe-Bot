@@ -1,6 +1,7 @@
 var http = require("http");
 var options = {
     host: "localhost",
+    path: "/healthcheck",
     port: "8080",
     timeout: 2000,
 };
