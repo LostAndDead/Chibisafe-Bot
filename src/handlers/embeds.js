@@ -35,7 +35,6 @@ module.exports.infoEmbed = async (file, interaction) => {
 - Type: \`${file.type}\`
 - URL: ${process.env.FRIENDLY_URL}/${file.name}
 - Thumbnail: ${`${file.thumb.replace(process.env.API_URL, process.env.FRIENDLY_URL)}` || "None"}
-- Thumbnail Square: ${`${file.thumbSquare.replace(process.env.API_URL, process.env.FRIENDLY_URL)}` || "None"}
 - Preview: ${`${file.preview.replace(process.env.API_URL, process.env.FRIENDLY_URL)}` || "None"}
 - Albums: \n  - ${file.albums.map(album => `[${album.name}](${process.env.FRIENDLY_URL}/dashboard/albums/${album.uuid})`).join('\n  - ')}
     `);
